@@ -7,7 +7,7 @@ php -r "readfile('https://getcomposer.org/installer');" | php
 Nos vamos a instalar zend framework en la carpeta del proyecto.
 
 ```sh
-composer create-project -n -sdev zendframework/skeleton-application ruta/del/proyecto
+composer create-project -s dev zendframework/skeleton-application ruta/del/proyecto
 ```
 
 Opcionalmente podemos crear un host virtual modificando nuestro archivo hosts. 
