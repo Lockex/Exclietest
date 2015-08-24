@@ -58,6 +58,7 @@ $ npm install -g generator-polymer
 Nos vamos a la carpeta del proyecto.
 
 ```sh
+$ cd ruta/del/proyecto/PUBLIC
 $ yo polymer
 ```
 Al hacer este ultimo comando ya creamos los archivos del bower que indican los componentes que se instalaron automaticamente gracias al yeoman.
