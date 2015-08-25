@@ -1,0 +1,13 @@
+<link rel="import" href="/app/elements/login-polyform/login-polyform.html">
+<style>
+	#divlogin {
+		display: table;
+		margin: 0 auto;
+		margin-top: 50px;
+	}
+</style>
+<div id="divlogin">
+	<login-polyform on-login="handleLogin" credentials="{{_user}}" mensaje="<?php echo $mensaje; ?>">
+      <img avatar src="https://randomuser.me/api/portraits/med/women/27.jpg"/>
+    </login-polyform>
+</div>
