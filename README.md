@@ -10,6 +10,41 @@ Nos vamos a instalar zend framework en la carpeta del proyecto.
 composer create-project -s dev zendframework/skeleton-application ruta/del/proyecto
 ```
 
+Ahora instalamos CsnUser (info del repositorio https://github.com/coolcsn/CsnUser)
+
+```sh
+cd ruta/del/proyecto
+composer require coolcsn/csn-user:dev-master
+```
+
+# Configurando CsnUser
+
+1. Agregamos los archivos locales del csnuser con los siguientes comandos.
+```sh
+cp ./vendor/coolcsn/csn-user/config/doctrineorm.local.php.dist ./config/autoload/doctrineorm.local.php
+cp ./vendor/coolcsn/csn-user/config/mail.config.local.php.dist ./config/autoload/mail.config.local.php
+cp ./vendor/coolcsn/csn-user/config/csnuser.global.php.dist ./config/autoload/csnuser.global.php
+```
+2. En el archivo ./config/autoload/doctrineorm.local.php colocamos los datos de conexion de nuestra base de datos.
+3. En el archivo ./config/application.config.php modificamos el arreglo de los modulos para activar los del csnuser para que queden así
+```sh
+'modules' => array(
+        'Application',
+        'DoctrineModule',
+        'DoctrineORMModule',
+        'CsnUser'
+    )
+```
+
+Ahora fetcheamos el repositorio de la siguiente forma:
+
+```sh
+git init
+git remote add origin https://github.com/Lockex/exclietest
+git fetch --all
+git reset --hard origin/master
+```
+
 Opcionalmente podemos crear un host virtual modificando nuestro archivo hosts. 
 
 # Unix/Os X
@@ -55,7 +90,7 @@ Instalamos globalmente los eskeletos del polymer.
 ```sh
 $ npm install -g generator-polymer
 ```
-Nos vamos a la carpeta del proyecto.
+Nos vamos a la carpeta PUBLIC (importante) del proyecto.
 
 ```sh
 $ cd ruta/del/proyecto/PUBLIC
