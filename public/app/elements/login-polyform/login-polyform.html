@@ -54,6 +54,7 @@ Ejemplo:
       background: #4285f4;
       color: white;
     }
+    
   </style>
 
   <template>
@@ -64,6 +65,7 @@ Ejemplo:
       <content select="[avatar]"></content>
 
       <form is="iron-form" id="form" method="POST" action="/login">
+        <h4>{{mensaje}}</h4>
         <paper-input id="username" 
           type="text"
           label="[[usernameInputLabel]]"
@@ -204,7 +206,12 @@ Ejemplo:
         type: String,
         notify: true,
         computed: '_computeCredentials(username, password)'
-      }
+      },
+
+      mensaje: {
+        type: String,
+        value: '',
+      },
     },
 
     // Element Lifecycle
@@ -257,7 +264,7 @@ Ejemplo:
      */
     fireLogin: function() {
       document.getElementById('form').submit();
-      location.reload();
+     // location.reload();
     }
   });
 </script>

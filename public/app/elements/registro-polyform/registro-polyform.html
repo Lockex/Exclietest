@@ -1,0 +1,153 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-material/paper-material.html">
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<!-- <link rel="import" href="../neon-animation/neon-animation.html"> -->
+
+
+<!--
+Material registro. Pide nombre, usuario/email y contraseña.
+
+Ejemplo:
+
+    <registro-polyform>
+      
+    </registro-polyform>
+
+@demo
+-->
+<dom-module id="registro-polyform">
+  <style>
+    :host {
+      display: block;
+      box-sizing: border-box;
+      text-align: center;
+      margin: 5px;
+      max-width: 500px;
+      min-width: 400px;
+      background-color: #fff;
+      @apply(--layout-horizontal);
+    }
+
+    .fila {
+      @apply(--layout-horizontal);
+    }
+
+    :host > h3 {
+      margin-top: 5px;
+    }
+
+    :host ::content img {
+      border-radius: 50%;
+    }
+
+    :host paper-input{
+      padding: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%;
+      text-align: center;
+    }
+
+    :host paper-material{
+      padding: 15px;
+    }
+
+    #submitbutton {
+      margin-top: 10px;
+      width: 90%;
+      background: #4285f4;
+      color: white;
+    }
+    
+  </style>
+
+  <template>
+  
+    <paper-material>
+      <h3>[[titulo]]</h3>
+
+      <form is="iron-form" id="form" method="POST" action="/registro">
+        
+        </paper-input-container>
+        <div class="fila">
+          <paper-input id="username" 
+            flex
+            type="text"
+            label="Usuario"
+            auto-validate pattern="[[usernameValidationPattern]]"
+            error-message="[[usernameErrorMessage]]"
+            name="usuario">
+          </paper-input>
+
+          <paper-input id="password" 
+            type="password" 
+            label="Contraseña" 
+            error-message="[[passwordErrorMessage]]"
+            name="pass">
+          </paper-input>
+        </div>
+        
+
+        <paper-input id="nombre" 
+          type="text"
+          label="Nombre completo"
+          auto-validate pattern="[[usernameValidationPattern]]"
+          error-message="[[usernameErrorMessage]]"
+          name="nombre">
+        </paper-input>
+
+        <input type="file">
+
+        <paper-button 
+          id="submitbutton" 
+          raised 
+          on-click="validate">Registrarse</paper-button>
+      </form>
+    </paper-material>
+
+  </template>
+
+</dom-module>
+
+<script>
+
+  Polymer({
+
+    is: 'registro-polyform',
+
+    properties: {
+
+      elevation: {
+        type: Number,
+        value: 3
+      },
+      titulo: {
+        type: String,
+        value: 'Registro de nuevo usuario',
+      },
+      usernameValidationPattern: {
+        type: String,
+        value: '^[a-zA-Z0-9]+$'
+      },
+      /**
+       * Error message displayed if `usernameValidationPattern` is not matched.
+       * @type {string}
+       */
+      usernameErrorMessage: {
+        type: String,
+        value: 'Sólo letras y números'
+      },
+      /**
+       * Error message displayed if `passwordValidationPattern` is not matched.
+       * @type {string}
+       */
+      passwordErrorMessage: {
+        type: String,
+        value: 'Sólo letras y números'
+      },
+    },
+  });
+</script>
